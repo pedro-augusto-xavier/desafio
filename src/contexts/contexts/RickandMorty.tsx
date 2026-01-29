@@ -7,13 +7,14 @@ export function RickMortyProvider({ children }: { children: React.ReactNode }) {
   const [personagens, setPersonagens] = useState([]);
 
   useEffect(() => {
-    fetch(`https://rickandmortyapi.com/api/character/?name=${inputText}`)
+    fetch(`https://dragonball-api.com/api/characters`)
       .then((res) => res.json())
       .then((data) => {
-        setPersonagens(data.results || []);
+        console.log(data)
+        setPersonagens(data.items || []);
       })
       .catch((err) => console.log(err));
-  }, [inputText]);
+  }, []);
 
   return (
     <RickMortyContext.Provider value={{ personagens, inputText, setInputText }}>
